@@ -12,7 +12,7 @@ const[Data,setdata]=useState(dataArr);
 
   return (
     <div className="App">
-      <Header></Header>
+      <Header  data={Data} setdata={setdata} dataArr={dataArr} ></Header>
       <Inputs data={Data} setdata={setdata} dataArr={dataArr} />
       {/* <Footer/> */}
     </div>
