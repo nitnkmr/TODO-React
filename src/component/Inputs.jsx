@@ -3,7 +3,7 @@ import "./Inputs.css"
 import Card from './Card'
 import { useState } from 'react'
 
-const Inputs = ({setdata,data}) => {
+const Inputs = ({setdata,data,dataArr}) => {
     const[val1,setVal1]=useState('')
     const[val2,setVal2]=useState('')
     const [valid, setvalid] = useState(false);
@@ -36,6 +36,13 @@ const Inputs = ({setdata,data}) => {
       newData.splice(i,1);
       setdata(newData);
     }
+    function edit(i){
+      let newData=[...data]
+      setVal1(newData[i].title)
+      setVal2(newData[i].desc)
+      newData.splice(i,1);
+      setdata(newData);
+    }
     
   return (
     <>
@@ -48,7 +55,7 @@ const Inputs = ({setdata,data}) => {
     </form>
 </div>
         {valid?<div style={{color:"red",fontSize:"20px",textAlign:"center"}}>--**Fill Both Input Fields**--</div>:null}
-    {data.map((e,i)=><Card title={e.title} dltme={dltme} desc={e.desc} key={i}/>)}
+    {data.map((e,i)=><Card title={e.title} dltme={dltme} edit={edit} desc={e.desc} key={i} index={i}/>)}
 </>
     )
 }

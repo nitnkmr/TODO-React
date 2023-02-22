@@ -2,7 +2,7 @@ import React from 'react'
 import './Card.css'
 import { useState } from 'react'
 
-const Card = ({title,desc,dltme,key}) => {
+const Card = ({title,desc,dltme,edit,index}) => {
   const [done,setDone]=useState(true)
   function handleDone(){
     setDone(!done);
@@ -14,7 +14,8 @@ const Card = ({title,desc,dltme,key}) => {
             <div className="description">{desc}</div>
         </div>
         <div className="button">
-            <button onClick={()=>dltme(key)}>Delete</button>
+            <button onClick={()=>dltme(index)}>Delete</button>
+            <button onClick={()=>edit(index)}>edit</button>
         </div>
         <div className="check">
           <button id='lable' onClick={handleDone} style={done?{backgroundColor:"rgb(244, 64, 64)"}:{backgroundColor:"white"}}>{done?"mark as done":"✅"}</button>
