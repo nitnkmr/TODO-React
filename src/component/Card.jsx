@@ -14,11 +14,11 @@ const Card = ({title,desc,dltme,edit,index}) => {
             <div className="description">{desc}</div>
         </div>
         <div className="button">
-            <button onClick={()=>dltme(index)}>Delete</button>
-            <button onClick={()=>edit(index)}>edit</button>
+            <button className='editicon' onClick={()=>dltme(index)}><img src="https://cdn-icons-png.flaticon.com/128/6861/6861362.png" alt="" height={25}/></button>
+            <button className='editicon' onClick={()=>edit(index)}><img src="https://cdn-icons-png.flaticon.com/128/1159/1159633.png" alt="" height={25}/></button>
+            <button  className='editicon' onClick={handleDone}>{done?<img src="https://cdn-icons-png.flaticon.com/512/833/833602.png" alt="" height={25}/>:<img src="https://cdn-icons-png.flaticon.com/128/190/190411.png" alt="" height={25}/>}</button>
         </div>
         <div className="check">
-          <button id='lable' onClick={handleDone} style={done?{backgroundColor:"rgb(244, 64, 64)"}:{backgroundColor:"white"}}>{done?"mark as done":"✅"}</button>
         </div>
     </div>
   )

@@ -38,3 +38,32 @@
     border-radius: 5px;
     border: 1px salmon solid;
 }
+.button{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.editicon{
+    background-color: white;
+    border: none;
+    width: 35px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.editicon:hover{
+    background-color: white;
+    border: none;
+    width: 35px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: scale(2px);
+
+}

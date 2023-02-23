@@ -5,14 +5,15 @@ import { useState } from 'react'
 
 const Inputs = ({setdata,data,dataArr}) => {
     const[val1,setVal1]=useState('')
+    const[editedData,seteditedData]=useState(data)
+    const [id, setid] = useState(null);
+    const[editbool,setEditbool]=useState(false)
     const[val2,setVal2]=useState('')
     const [valid, setvalid] = useState(false);
   
     
     function textHandle1(e){
         setVal1(e.target.value)
-        console.log(val1);
-        console.log(val2);
         
     }
     function textHandle2(e){
@@ -37,11 +38,25 @@ const Inputs = ({setdata,data,dataArr}) => {
       setdata(newData);
     }
     function edit(i){
-      let newData=[...data]
+        let newData=[...data]
       setVal1(newData[i].title)
       setVal2(newData[i].desc)
-      newData.splice(i,1);
-      setdata(newData);
+      seteditedData(newData);
+      
+      setEditbool(true);
+      setid(i)
+      console.log(newData);
+    
+}
+function editDone(e){
+    e.preventDefault();
+    let cooldata=[...editedData]
+    cooldata.splice(id,1,{title:val1,desc:val2})
+      setdata(cooldata);
+      setEditbool(false);
+      setVal1("")
+      setVal2("")
+
     }
     
   return (
@@ -51,7 +66,8 @@ const Inputs = ({setdata,data,dataArr}) => {
     <form>
         <input type="text" placeholder='title' value={val1} onChange={textHandle1} required />
         <textarea cols="60" rows="5" placeholder='Description' value={val2} onChange={textHandle2} required></textarea>
-        <button onClick={handleSubmit} type="submit">Add Task</button>
+        {editbool?<button onClick={editDone} type="submit">Done</button>
+        :<button onClick={handleSubmit} type="submit">Add Task</button>}
     </form>
 </div>
         {valid?<div style={{color:"red",fontSize:"20px",textAlign:"center"}}>--**Fill Both Input Fields**--</div>:null}
