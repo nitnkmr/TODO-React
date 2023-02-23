@@ -1,11 +1,13 @@
 .header{
     background-color: rgb(244, 64, 64);
     height: 60px;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     color: rgb(221, 236, 220);
     position: sticky;
     top: 0px;
+    align-items: center;
 }
 .header h2{
     height: 60px;
@@ -16,13 +18,32 @@
     
 }
 .nav{
-    width: 600px;
+    position: absolute;
+    right: 120px;
+    width: 100px;
 }
 .nav ul{
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     list-style: none;
+}
+.navi img{
+    filter: grayscale(100%);
+}
+@media screen and (max-width: 500px) {
+    .header h2{
+        position: absolute;
+        left: -109px;
+        font-size: 10px;
+    }
+    #search{
+        position: absolute;
+        right: 10px;
+        width: 70%;
+    }
+    
 }

@@ -3,21 +3,25 @@ import './Header.css'
 
 const Header = ({setdata,data}) => {
     const [search, setsearch] = useState("");
+    const [bar, setbar] = useState(false);
     function handleSearch(e){
         setsearch(e.target.value)
         console.log(search);
     }
+    function barHandle(){
+        setbar(!bar)
+    }
   return (
 <div className="header">
     <h2>TODO List</h2>
-    <div className="nav">
-        <ul>
-            <li><input type="text" placeholder='search..'value={search} onChange={handleSearch}/></li>
+    <input id='search' type="search" placeholder='search..'value={search} onChange={handleSearch}/>
+    <div className="nav" style={(bar)?{display:'none'}:{display:'flex'}}>
+        {/* <ul>
             <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-        </ul>
+           
+        </ul> */}
     </div>
+    {/* <div className="navi" onClick={barHandle}>{(bar)?<img src="https://cdn-icons-png.flaticon.com/128/2976/2976215.png" alt="" width={25}/>:<img src="https://cdn-icons-png.flaticon.com/128/2976/2976286.png" alt="" width={25} />}</div> */}
 </div>
     )
 }
